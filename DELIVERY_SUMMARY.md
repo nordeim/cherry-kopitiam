@@ -112,9 +112,8 @@
 ✅ package.json                  # Next.js 15 + dependencies
 ✅ tsconfig.json                 # TypeScript strict mode
 ✅ next.config.ts               # Next.js optimization
-✅ tailwind.config.ts           # Tailwind CSS 4.0 + tokens
 ✅ postcss.config.mjs           # PostCSS configuration
-✅ src/app/globals.css          # 3,000+ lines of design system
+✅ src/app/globals.css          # Design system via Tailwind v4 @theme
 ✅ src/app/page.tsx             # Home page with animations
 ✅ src/stores/cart-store.ts     # Zustand with undo/redo
 ✅ src/components/layout/header.tsx
