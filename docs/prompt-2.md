@@ -12,3 +12,7 @@ Awesome job on your meticulous analysis, planning and execution. Please keep up 
 
 Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review and validate the Laravel 12 scaffolding in `backend/` folder to make sure that the `backend` is ready for deployment. please use `./backend/composer.phar` for running composer commands.
 
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously plan and create tests for the frontend and backend functionalities/features to ensure production readiness.
+

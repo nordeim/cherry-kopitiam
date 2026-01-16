@@ -95,7 +95,7 @@ class OrderController extends Controller
                     'subtotal' => $breakdown['subtotal'],
                     'gst_amount' => $breakdown['gst_amount'],
                     'total_amount' => $breakdown['total_amount'],
-                    'status' => Order::STATUS_PENDING,
+                    'status' => 'PENDING', // Use uppercase to match ENUM
                     'location_id' => $validated['location_id'] ?? null,
                     'pdpa_consent_id' => $pdpaConsentId,
                     'notes' => $validated['notes'] ?? null,

@@ -85,9 +85,9 @@ class Order extends Model
         $gst = $total->minus($subtotalBd);
       
         return [
-            'subtotal' => (float) $subtotalBd->toScale(4, RoundingMode::HALF_UP),
-            'gst_amount' => (float) $gst->toScale(4, RoundingMode::HALF_UP),
-            'total_amount' => (float) $total->toScale(4, RoundingMode::HALF_UP),
+            'subtotal' => (float) (string) $subtotalBd->toScale(4, RoundingMode::HALF_UP),
+            'gst_amount' => (float) (string) $gst->toScale(4, RoundingMode::HALF_UP),
+            'total_amount' => (float) (string) $total->toScale(4, RoundingMode::HALF_UP),
         ];
     }
 

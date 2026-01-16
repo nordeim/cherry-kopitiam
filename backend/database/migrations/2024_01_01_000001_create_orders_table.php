@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->unique();
+            $table->string('customer_name');
+            $table->string('customer_email');
+            $table->string('customer_phone')->nullable();
             $table->foreignId('location_id')->nullable()->constrained();
             $table->foreignId('pdpa_consent_id')->nullable()->constrained();
             $table->enum('status', ['PENDING', 'CONFIRMED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED'])->default('PENDING');

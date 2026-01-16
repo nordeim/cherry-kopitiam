@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('category', ['COFFEE', 'TEA', 'FOOD', 'BEVERAGE'])->default('COFFEE');
             $table->decimal('price', 10, 4);
             $table->decimal('cost_price', 10, 4)->nullable();
-            $table->integer('stock')->default(0);
+            $table->integer('stock_quantity')->default(0);
             $table->integer('reorder_level')->default(10);
             $table->boolean('is_available')->default(true);
             $table->boolean('is_featured')->default(false);
