@@ -1,0 +1,37 @@
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Dependencies
+node_modules/
+vendor/
+plan/
+backup/
+
+# Build outputs
+.next/
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+.phpunit.result.cache
+
+# Docker volumes (local)
+.docker-data/
