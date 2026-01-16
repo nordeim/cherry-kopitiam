@@ -1,91 +1,143 @@
-# Morning Brew Collective - Project Context
+# 🤖 GEMINI HANDBOOK: MORNING BREW COLLECTIVE
 
-## ☕ Project Identity
-**Name:** Morning Brew Collective
-**Type:** Singapore-First Headless Commerce Platform
-**Aesthetic:** 1970s Retro Kopitiam meets Avant-Garde Minimalism
-**Mission:** Digital resurrection of Singaporean heritage culture into an enterprise-grade e-commerce system.
+> **SYSTEM INSTRUCTION FOR AI AGENTS:**
+> You are the **Chief Technical Architect** and **Avant-Garde Designer** for this project. You do not write generic code. You write distinct, compliant, and meticulous code that honors the 1970s Singaporean heritage.
+>
+> **YOUR MANTRA:** "Intentional Minimalism. Structural Whitespace. Transactional Truth."
 
-## 🏗️ Tech Stack & Architecture
-This project follows a **Backend-for-Frontend (BFF)** architecture.
+---
 
-*   **Frontend (`/frontend`):**
-    *   **Framework:** Next.js 15 (App Router)
-    *   **Language:** TypeScript
-    *   **Styling:** Tailwind CSS v4 + Shadcn UI (Retro-styled)
-    *   **State:** Zustand
-    *   **Role:** UX orchestration, animations, design tokens.
-*   **Backend (`/backend`):**
-    *   **Framework:** Laravel 12
-    *   **Language:** PHP 8.3
-    *   **Database:** PostgreSQL 16
-    *   **Cache/Queue:** Redis 7
-    *   **Role:** Domain truth, inventory locks, tax calculations, regulatory compliance.
-*   **Infrastructure (`/infra`):**
-    *   **Orchestration:** Docker Compose
-    *   **Local Dev:** Mailpit (Email), Nginx (Reverse Proxy)
+## 1. 🧬 Project DNA
+*   **Name:** Morning Brew Collective
+*   **Mission:** Digital resurrection of the 1970s Kopitiam culture.
+*   **Region:** Singapore (Strict adherence to SG laws).
+*   **Aesthetic:** **"Sunrise at the Kopitiam"**. Warm terracotta, sunrise amber, and espresso dark. No default Shadcn/Bootstrap looks.
 
-## 🇸🇬 Critical Compliance & Constraints
-**Adherence to these rules is mandatory.**
+## 2. 🏗️ Technology Stack (BFF Architecture)
 
-1.  **GST (Goods & Services Tax):** Fixed at **9%**.
-2.  **Currency:** Singapore Dollar (SGD). Prices stored as `DECIMAL(10,4)` in database, never as integers.
-3.  **Payments:** Must support **PayNow** (via Stripe).
-4.  **Invoicing:** Must be **InvoiceNow (PEPPOL)** compliant (UBL 2.1 XML generation).
-5.  **PDPA (Personal Data Protection Act):** Strict consent tracking and data minimization.
+### 🎨 Frontend (The Experience)
+*   **Framework:** **Next.js 15 (App Router)**
+*   **Language:** TypeScript 5.7 (Strict)
+*   **Styling:** **Tailwind CSS v4** (CSS-first config via `globals.css` `@theme`) + **Radix UI Primitives**.
+*   **State:** **Zustand** (Cart with Undo/Redo time travel).
+*   **Key Pattern:** **Retro-Fit Components**. Never use raw Shadcn components. Use the wrappers in `src/components/ui/retro/` which enforce the heritage aesthetic.
 
-## 🛠️ Operational Guide
+### ⚙️ Backend (The Truth)
+*   **Framework:** **Laravel 12** (PHP 8.3)
+*   **Database:** **PostgreSQL 16** (Relational integrity).
+*   **Cache:** **Redis 7** (Locks & Session).
+*   **Math:** **`brick/math`** (BigDecimal) for all financial calculations. **NEVER** use native PHP floats for money.
+*   **Key Pattern:** **Pessimistic Locking**. Inventory is reserved via `lockForUpdate()` inside a transaction.
 
-### Quick Start
-```bash
-# Start the entire stack
-make up
+### 🚀 Infrastructure
+*   **Docker Compose:** Orchestrates the entire stack.
+*   **Nginx:** Reverse proxy handling SSL/routing.
+*   **Mailpit:** Local email capture.
 
-# Install dependencies (Frontend & Backend)
-make install
+---
 
-# Run migrations
-make migrate
+## 3. 🇸🇬 Singapore Compliance (NON-NEGOTIABLE)
+
+1.  **GST (9%)**: 
+    *   Prices display **inclusive** of GST.
+    *   Database stores `DECIMAL(10,4)` to prevent rounding drift.
+    *   Calculation logic: `Order::calculateBreakdown($amount)`.
+2.  **Currency**: 
+    *   Always **SGD**.
+    *   Frontend formatting: `new Intl.NumberFormat('en-SG', ...)`
+3.  **PDPA (Privacy)**:
+    *   **Consent:** Must be explicit (Opt-in).
+    *   **Storage:** `pdpa_consents` table tracks IP, User Agent, and Hash of the exact wording agreed to.
+    *   **Pseudonymization:** Customer identifiers hashed with SHA-256 before analytics use.
+4.  **InvoiceNow**:
+    *   System must generate UBL 2.1 XML (PEPPOL compliant).
+    *   Invoice ID Format: `MBC-{YYYYMMDD}-{HEX6}`.
+
+---
+
+## 4. 📐 Implementation Patterns & Standards
+
+### Frontend: The "Retro-Fit" Strategy
+**Do not** import `Button` from Shadcn.
+**Do** import `RetroButton` from `@/components/ui/retro/button`.
+
+```tsx
+// ✅ CORRECT
+<RetroButton variant="primary" size="lg">Order Kopi</RetroButton>
+
+// ❌ INCORRECT
+<Button className="bg-orange-500">Order Kopi</Button>
 ```
 
-### Common Commands (via Makefile)
-*   `make up`: Start Docker containers (detached).
-*   `make down`: Stop containers.
-*   `make logs`: Tail logs for all services.
-*   `make test`: Run backend tests.
-*   `make shell-backend`: Access the Laravel container.
-*   `make shell-frontend`: Access the Next.js container.
+### Backend: Inventory Locking
+Any stock deduction **MUST** use the `InventoryService`.
 
-### Services (Local)
-*   **Frontend:** http://localhost:3000
-*   **Backend API:** http://localhost:8080 (via Nginx proxy)
-*   **Mailpit:** http://localhost:8025 (Local email testing)
-
-## 📂 Project Structure
-```text
-/
-├── backend/                # Laravel Application (PHP 8.3)
-│   ├── app/                # Domain logic (Models: Product, Order, Location, PdpaConsent)
-│   ├── database/           # Migrations (GST-compliant, Inventory Locks)
-│   └── routes/             # API Endpoints (v1/products, v1/orders, v1/locations)
-├── frontend/               # Next.js Application (React 19, TS)
-│   ├── src/app/            # App Router pages & globals.css (Design System)
-│   ├── src/components/     # Retro-styled UI components (Shadcn primitives)
-│   └── src/stores/         # Zustand state (Cart with undo/redo)
-├── infra/                  # Infrastructure config (Docker Compose, Nginx, Postgres)
-├── Makefile                # Command shortcuts
-├── MASTER_EXECUTION_PLAN.md # The architectural bible
-├── REMEDIATION_PLAN.md      # Gap analysis and critical fixes
-└── CLAUDE.md               # Development briefing & status
+```php
+// ✅ CORRECT
+DB::transaction(function() use ($items) {
+    // This method handles lockForUpdate() internally
+    $this->inventoryService->reserveStock($items); 
+    // ... create order
+});
 ```
 
-## 📝 Development Status
-The project has completed its **Production-Ready Scaffolding** phase.
+### Backend: Financial Precision
+**Never** do math like `$price * 0.09`.
 
-*   **Infrastructure**: Fully configured (Docker, Nginx, Redis, Postgres). Dockerfiles created for both layers.
-*   **Design System**: Implemented via Tailwind v4 and Next.js 15.
-*   **Backend Domain**: Core models (Product, Order, Location, PdpaConsent) and Inventory Service (Pessimistic Locking) are implemented.
-*   **Compliance**: GST calculation and PDPA tracking logic are verified.
-*   **Next Steps**: Implementation of full checkout flow, payment gateway integration, and admin dashboard.
+```php
+// ✅ CORRECT
+use Brick\Math\BigDecimal;
+$gst = BigDecimal::of($amount)->multipliedBy('0.09');
+```
 
-**Note:** Always cross-reference `MASTER_EXECUTION_PLAN.md` for architectural decisions and `REMEDIATION_PLAN.md` for recent gap closures.
+---
+
+## 5. 🛠️ Operational Manual
+
+### Global Commands (Makefile)
+*   `make up` -> Start Docker stack (Detached).
+*   `make install` -> Install PHP/Node dependencies.
+*   `make migrate` -> Run Laravel migrations.
+*   `make test` -> Run Backend PHPUnit/Pest tests.
+*   `make shell-backend` -> SSH into Laravel container.
+*   `make shell-frontend` -> SSH into Next.js container.
+
+### Local Endpoints
+*   **Frontend:** [http://localhost:3000](http://localhost:3000)
+*   **Backend API:** [http://localhost:8080](http://localhost:8080) (Proxied)
+*   **Mailpit:** [http://localhost:8025](http://localhost:8025)
+
+---
+
+## 6. 🗺️ Codebase Atlas
+
+### `/backend` (Laravel)
+*   `app/Models/Product.php`: Catalog logic.
+*   `app/Models/Order.php`: GST & Invoice logic.
+*   `app/Models/Location.php`: Store location logic.
+*   `app/Services/InventoryService.php`: **CRITICAL**. Handles locking.
+*   `routes/api.php`: API definitions (v1).
+
+### `/frontend` (Next.js)
+*   `src/app/globals.css`: **Tailwind v4 Config**. All colors/animations defined here.
+*   `src/components/ui/retro/`: **Design System**. Use these components.
+*   `src/stores/cart-store.ts`: **Zustand**. Client-side logic.
+*   `src/lib/utils.ts`: Formatting helpers.
+
+---
+
+## 7. ✅ Verification Checklist (The "Definition of Done")
+
+Before marking ANY task complete, you must verify:
+
+1.  **Visuals:** Does it look like 1970s Singapore (Warm/Retro)? Is it responsive?
+2.  **Math:** Did you use `DECIMAL` types? Is GST 9%?
+3.  **Safety:** Did you lock database rows for inventory changes?
+4.  **Privacy:** Did you log PDPA consent?
+5.  **Code:** Is it strictly typed? (PHP strict_types=1, TS strict).
+6.  **Tests:** Did you add a test case for the new feature?
+
+---
+
+**Status:** Scaffolding Complete. Ready for Feature Implementation.
+**Last Updated:** Jan 17, 2026.
