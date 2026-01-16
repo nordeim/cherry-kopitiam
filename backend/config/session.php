@@ -4,81 +4,84 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
+    | Default Session Driver
     |--------------------------------------------------------------------------
     */
 
-    'name' => env('APP_NAME', 'Morning Brew Collective'),
+    'driver' => env('SESSION_DRIVER', 'cookie'),
 
     /*
     |--------------------------------------------------------------------------
-    | Application Environment
+    | Session Lifetime
     |--------------------------------------------------------------------------
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'lifetime' => env('SESSION_LIFETIME', '120'),
+
+    'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 
     /*
     |--------------------------------------------------------------------------
-    | Application Debug Mode
+    | Session Encryption
     |--------------------------------------------------------------------------
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'encrypt' => env('SESSION_ENCRYPT', false),
 
     /*
     |--------------------------------------------------------------------------
-    | Application URL
+    | Session File Location
     |--------------------------------------------------------------------------
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'files' => storage_path('framework/sessions'),
 
     /*
     |--------------------------------------------------------------------------
-    | Application Timezone
+    | Session Database Connection
     |--------------------------------------------------------------------------
     */
 
-    'timezone' => 'Asia/Singapore',
+    'connection' => env('SESSION_CONNECTION'),
 
     /*
     |--------------------------------------------------------------------------
-    | Application Locale Configuration
+    | Session Database Table
     |--------------------------------------------------------------------------
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
-
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_SG'),
+    'table' => env('SESSION_TABLE', 'sessions'),
 
     /*
     |--------------------------------------------------------------------------
-    | Encryption Key
+    | Session Cache Connection
     |--------------------------------------------------------------------------
     */
 
-    'cipher' => 'AES-256-CBC',
-
-    'key' => env('APP_KEY'),
-
-    'previous_keys' => [
-        ...array_filter(
-            explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
-        ),
-    ],
+    'store' => env('SESSION_STORE'),
 
     /*
     |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
+    | Session Sweeping Lottery
     |--------------------------------------------------------------------------
     */
 
-    'maintenance' => [
-        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+    'lottery' => [2, 100],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Configuration
+    |--------------------------------------------------------------------------
+    */
+
+    'cookie' => [
+        'name' => env('SESSION_COOKIE_NAME', 'LARAVEL_SESSION'),
+        'path' => env('SESSION_COOKIE_PATH', '/'),
+        'domain' => env('SESSION_COOKIE_DOMAIN'),
+        'secure' => env('SESSION_COOKIE_SECURE', false),
+        'http_only' => env('SESSION_COOKIE_HTTP_ONLY', true),
+        'same_site' => env('SESSION_COOKIE_SAME_SITE', 'lax'),
+        'partitioned' => env('SESSION_COOKIE_PARTITIONED', false),
     ],
 
 ];

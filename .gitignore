@@ -9,6 +9,7 @@ node_modules/
 vendor/
 plan/
 backup/
+storage/
 
 # Build outputs
 .next/

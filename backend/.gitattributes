@@ -1,0 +1,5 @@
+recursive-include . -name '.gitkeep'
+recursive-include storage/logs -name '*.log'
+recursive-include storage/framework/cache -name '*'
+recursive-include storage/framework/sessions -name '*'
+recursive-include storage/framework/views -name '*'
