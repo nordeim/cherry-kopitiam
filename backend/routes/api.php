@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\LocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,10 @@ Route::prefix('v1')->group(function () {
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::get('/products/category/{category}', [ProductController::class, 'byCategory']);
+  
+    // Locations
+    Route::get('/locations', [LocationController::class, 'index']);
+    Route::get('/locations/{id}', [LocationController::class, 'show']);
   
     // Orders - Public (for order lookup)
     Route::get('/orders/invoice/{invoiceNumber}', [OrderController::class, 'byInvoice']);

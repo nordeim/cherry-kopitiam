@@ -1,5 +1,7 @@
-recursive-include . -name '.gitkeep'
-recursive-include storage/logs -name '*.log'
-recursive-include storage/framework/cache -name '*'
-recursive-include storage/framework/sessions -name '*'
-recursive-include storage/framework/views -name '*'
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.vue linguist-vendored
+*.blade.php diff=html
+*.php diff=php

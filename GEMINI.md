@@ -52,46 +52,40 @@ make migrate
 *   `make up`: Start Docker containers (detached).
 *   `make down`: Stop containers.
 *   `make logs`: Tail logs for all services.
-*   `make test`: Run both frontend (Vitest) and backend (Pest) tests.
-*   `make lint`: Run linters (Pint for PHP, ESLint for JS/TS).
+*   `make test`: Run backend tests.
 *   `make shell-backend`: Access the Laravel container.
 *   `make shell-frontend`: Access the Next.js container.
 
 ### Services (Local)
 *   **Frontend:** http://localhost:3000
-*   **Backend API:** http://localhost:8000
-*   **Mailpit:** http://localhost:8025
-*   **PostgreSQL:** Port 5432
-*   **Redis:** Port 6379
+*   **Backend API:** http://localhost:8080 (via Nginx proxy)
+*   **Mailpit:** http://localhost:8025 (Local email testing)
 
 ## 📂 Project Structure
 ```text
 /
-├── backend/                # Laravel Application
-│   ├── app/                # Domain logic, Models, Services
-│   └── database/           # Migrations, Seeders
-├── frontend/               # Next.js Application
-│   ├── src/app/            # App Router pages
-│   └── src/components/     # Retro-styled UI components
-├── infra/                  # Infrastructure config (Postgres init, Nginx)
-├── scripts/                # Utility scripts
-├── docker-compose.yml      # Service orchestration
+├── backend/                # Laravel Application (PHP 8.3)
+│   ├── app/                # Domain logic (Models: Product, Order, Location, PdpaConsent)
+│   ├── database/           # Migrations (GST-compliant, Inventory Locks)
+│   └── routes/             # API Endpoints (v1/products, v1/orders, v1/locations)
+├── frontend/               # Next.js Application (React 19, TS)
+│   ├── src/app/            # App Router pages & globals.css (Design System)
+│   ├── src/components/     # Retro-styled UI components (Shadcn primitives)
+│   └── src/stores/         # Zustand state (Cart with undo/redo)
+├── infra/                  # Infrastructure config (Docker Compose, Nginx, Postgres)
 ├── Makefile                # Command shortcuts
 ├── MASTER_EXECUTION_PLAN.md # The architectural bible
-└── VALIDATED_EXECUTION_PLAN.md # The actual todo list
+├── REMEDIATION_PLAN.md      # Gap analysis and critical fixes
+└── CLAUDE.md               # Development briefing & status
 ```
 
 ## 📝 Development Status
-The project is being built in **Phases**. Refer to the `PHASE_*_PLAN.md` files for specific implementation details of each stage.
+The project has completed its **Production-Ready Scaffolding** phase.
 
-*   **Phase 0:** Infrastructure (Completed)
-*   **Phase 1:** Design System (Completed)
-*   **Phase 2:** Frontend Structure (Completed)
-*   **Phase 3:** Interactive State (Completed)
-*   **Phase 4:** Backend Domain (Completed)
-*   **Phase 5:** Checkout & Payments (Completed)
-*   **Phase 6:** Infrastructure & Deployment (Completed)
-*   **Phase 7:** Testing & QA (Completed)
-*   **Phase 8:** Operations & Admin (Completed)
+*   **Infrastructure**: Fully configured (Docker, Nginx, Redis, Postgres). Dockerfiles created for both layers.
+*   **Design System**: Implemented via Tailwind v4 and Next.js 15.
+*   **Backend Domain**: Core models (Product, Order, Location, PdpaConsent) and Inventory Service (Pessimistic Locking) are implemented.
+*   **Compliance**: GST calculation and PDPA tracking logic are verified.
+*   **Next Steps**: Implementation of full checkout flow, payment gateway integration, and admin dashboard.
 
-**Note:** Always cross-reference `VALIDATED_EXECUTION_PLAN.md` for the most up-to-date task status.
+**Note:** Always cross-reference `MASTER_EXECUTION_PLAN.md` for architectural decisions and `REMEDIATION_PLAN.md` for recent gap closures.
