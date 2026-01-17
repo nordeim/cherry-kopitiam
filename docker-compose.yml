@@ -66,7 +66,7 @@ services:
       dockerfile: Dockerfile
       args:
         NODE_VERSION: 22.22.0
-        COMPOSER_VERSION: 2.8.2
+        COMPOSER_VERSION: 2.9.3
     container_name: morning_brew_app
     restart: unless-stopped
     environment:
