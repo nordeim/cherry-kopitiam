@@ -36,3 +36,7 @@ Awesome job on your meticulous analysis, planning and execution. Please keep up 
 
 Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review @README.md and @GEMINI.md , then plan and update them with the latest changes to the project setup and the current state of codebase (e.g. "db migrations successful"), particularly related to the new Docker container configuration setup and the update Makefile.
 
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously plan to create tests or scripts to test/verify the backend API endpoints to ensure that they function as expected. If necessary plan and create test data seed sctipt to better simulate the backend BFF endpoints. One possibility is to use `curl POST or GET` to simulate how the frontend app will call the backend endpoints.
+
