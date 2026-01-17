@@ -103,6 +103,12 @@ const Header = () => {
             <DialogPrimitive.Portal>
               <DialogPrimitive.Overlay className="fixed inset-0 bg-espresso-dark z-50 animate-fade-in" />
               <DialogPrimitive.Content className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 p-8">
+                <DialogPrimitive.Title className="sr-only">
+                  Navigation Menu
+                </DialogPrimitive.Title>
+                <DialogPrimitive.Description className="sr-only">
+                  Mobile navigation links for Morning Brew Collective.
+                </DialogPrimitive.Description>
                 {navLinks.map((link) => (
                   <DialogPrimitive.Close asChild key={link.href}>
                     <a
