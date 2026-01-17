@@ -1,0 +1,14 @@
+morning-brew/
+├── docker-compose.yml          # Main orchestration
+├── .env.docker                # Singapore environment config
+├── .dockerignore             # Build optimization
+├── Makefile                  # Singapore operational commands
+├── app/
+│   └── Dockerfile            # PHP + Node.js multi-stage build
+├── nginx/
+│   ├── nginx.conf           # Production-grade Nginx config
+│   └── conf.d/
+│       └── morning-brew.conf # Virtual host with Singapore compliance
+├── db/
+│   └── init.sql             # Singapore database initialization
+└── ssl/                     # SSL certificates (to be generated)
