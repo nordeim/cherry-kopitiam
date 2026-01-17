@@ -2,7 +2,7 @@
 FROM php:8.3.30-fpm-trixie AS php-base
 
 # Arguments
-ARG COMPOSER_VERSION=2.8.2
+ARG COMPOSER_VERSION=2.9.3
 ARG NODE_VERSION=22.22.0
 
 # Set environment for Singapore locale
