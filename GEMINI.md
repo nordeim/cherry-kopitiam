@@ -161,6 +161,16 @@ export const viewport: Viewport = {
 *   `app/Services/InventoryService.php`: **CRITICAL**. Handles locking.
 *   `routes/api.php`: API definitions (v1).
 
+**Implemented Endpoints (v1):**
+-   `GET /api/v1/products` - List available products
+-   `GET /api/v1/products/{id}` - Get product details
+-   `GET /api/v1/products/category/{category}` - Filter products
+-   `GET /api/v1/locations` - List store locations
+-   `GET /api/v1/locations/{id}` - Get location details
+-   `POST /api/v1/orders` - Create new order (with inventory lock & PDPA consent)
+-   `GET /api/v1/orders/{id}` - Get order details
+-   `GET /api/v1/orders/invoice/{invoiceNumber}` - Lookup order by invoice
+
 ### `/frontend` (Next.js)
 *   `src/app/globals.css`: **Tailwind v4 Config**. All colors/animations defined here.
 *   `src/components/ui/retro/`: **Design System**. Use these components.

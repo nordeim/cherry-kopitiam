@@ -190,6 +190,21 @@ sequenceDiagram
 
 ---
 
+## 🗺️ Roadmap
+
+The following features are planned to enhance the production readiness of the platform:
+
+- [ ] **Authentication**: Implement User and Admin authentication using Laravel Sanctum.
+- [ ] **Payment Gateway**: Complete Stripe integration for PayNow and Credit Card processing.
+- [ ] **Admin Dashboard**: Build a comprehensive admin panel for order and inventory management.
+- [ ] **InvoiceNow Integration**: Fully implement UBL 2.1 XML generation and PEPPOL network transmission.
+- [ ] **Advanced Filtering**: Enhance product search with more granular filters (e.g., spice level, dietary restrictions).
+- [ ] **User Profile**: Allow users to view order history and manage PDPA consent settings.
+- [ ] **Performance Optimization**: Implement Redis caching for product listings and CDN integration for static assets.
+- [ ] **CI/CD Pipeline**: Set up automated testing and deployment workflows.
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions that align with our **"Meticulous"** philosophy.
