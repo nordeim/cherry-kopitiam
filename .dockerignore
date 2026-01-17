@@ -10,14 +10,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
-vendor/
-.next/
-storage/framework/cache/
-storage/framework/sessions/
-storage/framework/views/
-storage/logs/
+# Monorepo Dependency Directories
+**/node_modules/
+**/vendor/
+**/dist/
+frontend/.next/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/storage/logs/
+
+# Local Persistence (Exclude database/redis data)
+data/
 
 # Environment files
 .env*
