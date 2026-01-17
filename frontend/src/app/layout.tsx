@@ -17,13 +17,13 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Morning Brew Collective - Where Singapore\'s Morning Ritual Begins',
   description: 'Experience the perfect blend of tradition and modernity. Authentic Singapore kopitiam experience since 1973.',
-  themeColor: '#3D2B1F',
   keywords: ['kopi', 'Singapore', 'coffee', 'kopitiam', 'heritage', 'traditional'],
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#3D2B1F',
 }
 
 export default function RootLayout({

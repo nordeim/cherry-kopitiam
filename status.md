@@ -259,3 +259,37 @@ I have successfully completed **100% of the Laravel 12 scaffolding** for Morning
 
   The codebase is now rigorously tested and aligned with the architectural design. The passing test suite confirms the integrity of the critical financial and inventory systems.
 
+---
+
+✦ I have successfully meticulously reviewed the situation, reverted the changes, and fixed the build/lint errors to align with the Tailwind CSS v4 pattern as requested.
+
+  Executed Plan Summary:
+
+   1. Analyzed the Situation: The previous build failure was due to a Syntax error: Cannot apply unknown utility class heading-display in globals.css after upgrading to Tailwind CSS v4. This was because .heading-display was defined as a
+      standard CSS class but was being used with @apply as if it were a Tailwind utility.
+   2. Reverted to Tailwind CSS v4: I re-installed the correct v4 packages (tailwindcss, @tailwindcss/postcss, postcss) and removed the v3 legacy packages.
+   3. Fixed `globals.css`:
+       * I correctly migrated the .heading-display class definition to use the new @utility directive introduced in Tailwind CSS v4. This registers it as a utility layer class, allowing it to be used with @apply in other rules (like
+         .heading-1).
+       * This change strictly follows the @programming_guide_tailwindcss_migration_to_v4.md which states: "Critical Change: @layer utilities → @utility directive."
+   4. Resolved Dependency Issues:
+       * I installed postcss-loader and autoprefixer which were missing but required by the build process.
+       * I also installed critters to resolve a prerendering error (MODULE_NOT_FOUND) during the build.
+   5. Fixed Linting Errors: I addressed all ESLint errors in the frontend components (mostly unescaped entities like apostrophes and unused imports).
+   6. Fixed Deprecation Warning: I moved the themeColor property from metadata to the viewport export in frontend/src/app/layout.tsx to align with Next.js 15 best practices and suppress the build warning.
+   7. Verified Build: The final npm run build executed successfully with no errors and a clean output.
+
+  The frontend is now successfully built using Next.js 15 and Tailwind CSS v4, adhering to the project's architectural guidelines.
+
+---
+
+✦ I have meticulously updated GEMINI.md to reflect the latest project state, specifically incorporating the lessons learned from the Tailwind CSS v4 migration and frontend build process.
+
+  Key Updates:
+   1. Critical Known Issues Section: Added a specific section detailing the Syntax error: Cannot apply unknown utility class issue and the correct usage of the @utility directive in Tailwind v4.
+   2. Frontend Build Dependencies: Explicitly listed the required dependencies (@tailwindcss/postcss, autoprefixer, postcss-loader, critters) to prevent future build failures.
+   3. Next.js 15 Viewport Requirement: Documented the mandatory move of themeColor from metadata to viewport.
+   4. Verification Checklist: Added a explicit "Build" check to ensure Tailwind compliance is verified before task completion.
+
+  The handbook is now a comprehensive guide for maintaining the project's architectural integrity and avoiding known pitfalls.
+

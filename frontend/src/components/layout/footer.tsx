@@ -27,7 +27,7 @@ const Footer = () => {
               About Us
             </h3>
             <p className="opacity-80 leading-relaxed">
-              Since 1973, Morning Brew Collective has been serving Singapore's 
+              Since 1973, Morning Brew Collective has been serving Singapore&apos;s 
               best traditional kopitiam experience. Our recipes honor generations 
               of heritage.
             </p>

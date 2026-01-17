@@ -16,3 +16,12 @@ Awesome job on your meticulous analysis, planning and execution. Please keep up 
 
 Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously plan and create tests for the frontend and backend functionalities/features to ensure production readiness.
 
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously plan and design tests for the `frontend` app as well. run build and lint tests to ensure that the frontend can be started without error.
+
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review and then plan to update @GEMINI.md to include the latest updates/changes to the codebase, particularly the issues related to Tailwind CSS v4 and its resolution so that any AI coding agent taking over the project can avoid the same errors and issues. Review and validate your plan to include the additional details to @GEMINI.md before proceeding to execute it meticulously. 
+
+

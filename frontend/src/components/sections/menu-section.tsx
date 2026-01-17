@@ -3,7 +3,6 @@
 import * as React from 'react'
 import { Plus } from 'lucide-react'
 import { RetroCard } from '@/components/ui/retro/card'
-import { RetroButton } from '@/components/ui/retro/button'
 import { useCartStore } from '@/stores/cart-store'
 import { cn } from '@/lib/utils'
 

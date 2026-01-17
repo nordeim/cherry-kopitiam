@@ -37,7 +37,7 @@ const Hero = () => {
 
           {/* Title */}
           <h1 className="heading-1 mb-6">
-            Where Singapore's{' '}
+            Where Singapore&apos;s{' '}
             <span className="text-terracotta-warm italic block">
               Morning Ritual
             </span>{' '}
@@ -47,7 +47,7 @@ const Hero = () => {
           {/* Subtitle */}
           <p className="text-xl text-mocha-medium mb-8 max-w-lg">
             Experience the perfect blend of tradition and modernity in every cup. 
-            Crafted with love since 1973, our kopi tells the story of Singapore's 
+            Crafted with love since 1973, our kopi tells the story of Singapore&apos;s 
             kopitiam heritage.
           </p>
 

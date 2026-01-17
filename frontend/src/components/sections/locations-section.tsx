@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { MapPin, Clock, ArrowRight } from 'lucide-react'
+import { MapPin, Clock } from 'lucide-react'
 import { RetroButton } from '@/components/ui/retro/button'
 import { RetroCard } from '@/components/ui/retro/card'
 
@@ -135,7 +135,7 @@ const LocationsSection = () => {
 
         <div className="text-center mt-8 text-cream-white fade-in">
           <p className="mb-4">
-            Can't visit? Order via <strong>GrabFood</strong>, <strong>FoodPanda</strong>, or <strong>Deliveroo</strong>.
+            Can&apos;t visit? Order via <strong>GrabFood</strong>, <strong>FoodPanda</strong>, or <strong>Deliveroo</strong>.
           </p>
           <RetroButton asChild>
             <a href="#order">Order Delivery</a>

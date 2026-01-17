@@ -109,7 +109,47 @@ $gst = BigDecimal::of($amount)->multipliedBy('0.09');
 
 ---
 
-## 6. 🗺️ Codebase Atlas
+## 6. ⚠️ Critical Known Issues & Solutions (READ THIS)
+
+### Tailwind CSS v4 Configuration
+**Issue:** `Syntax error: Cannot apply unknown utility class` when building CSS.
+**Cause:** Tailwind v4 changed how `@apply` works with custom classes. You cannot `@apply` a class defined in standard CSS unless it is registered as a utility.
+**Solution:**
+Use the `@utility` directive instead of `.classname` for any reusable styles you intend to `@apply`.
+
+```css
+/* ❌ INCORRECT (v3 style) */
+.heading-display {
+  font-family: var(--font-display);
+}
+
+/* ✅ CORRECT (v4 style) */
+@utility heading-display {
+  font-family: var(--font-display);
+}
+```
+
+### Frontend Build Dependencies
+**Requirement:** The frontend build pipeline requires specific PostCSS plugins even with Tailwind v4.
+**Manifest:**
+*   `@tailwindcss/postcss` (Required for Next.js integration)
+*   `autoprefixer` (Required for cross-browser compat)
+*   `postcss-loader` (Required for Webpack)
+*   `critters` (Required for Next.js SSG optimization)
+
+### Metadata & Viewport
+**Next.js 15 Requirement:** `themeColor` is no longer valid in `metadata`. It **must** be defined in the `viewport` export.
+
+```typescript
+// src/app/layout.tsx
+export const viewport: Viewport = {
+  themeColor: '#3D2B1F', // ✅ Correct location
+}
+```
+
+---
+
+## 7. 🗺️ Codebase Atlas
 
 ### `/backend` (Laravel)
 *   `app/Models/Product.php`: Catalog logic.
@@ -126,7 +166,7 @@ $gst = BigDecimal::of($amount)->multipliedBy('0.09');
 
 ---
 
-## 7. ✅ Verification Checklist (The "Definition of Done")
+## 8. ✅ Verification Checklist (The "Definition of Done")
 
 Before marking ANY task complete, you must verify:
 
@@ -136,8 +176,9 @@ Before marking ANY task complete, you must verify:
 4.  **Privacy:** Did you log PDPA consent?
 5.  **Code:** Is it strictly typed? (PHP strict_types=1, TS strict).
 6.  **Tests:** Did you add a test case for the new feature?
+7.  **Build:** Did you run `npm run build` in frontend to ensure Tailwind compliance?
 
 ---
 
-**Status:** Scaffolding Complete. Ready for Feature Implementation.
+**Status:** Scaffolding Complete. Tests Passing. Ready for Feature Implementation.
 **Last Updated:** Jan 17, 2026.

@@ -18,7 +18,7 @@ const HeritageSection = () => {
         <div className="text-center mb-12 fade-in">
           <h2 className="heading-2 mb-3 text-espresso-dark">Our Kopitiam Heritage</h2>
           <p className="text-lg text-mocha-medium max-w-md mx-auto">
-            Preserving Singapore's coffee culture since 1973
+            Preserving Singapore&apos;s coffee culture since 1973
           </p>
         </div>
 
@@ -32,18 +32,18 @@ const HeritageSection = () => {
               n 1973, Uncle Lim opened his first kopitiam stall at Tiong Bahru Market. 
               With nothing but a trusty coffee sock, a worn marble table, and recipes 
               passed down through generations, he began serving what would become 
-              Singapore's most beloved morning ritual.
+              Singapore&apos;s most beloved morning ritual.
             </p>
 
             {/* Quote */}
             <div className="bg-white/30 rounded-xl p-8 my-8 relative border-3 border-dashed border-terracotta-warm">
               <span className="absolute -top-6 left-6 font-display text-8xl text-terracotta-warm opacity-50 leading-none">
-                "
+                &quot;
               </span>
               <blockquote className="font-display text-xl italic text-espresso-dark leading-relaxed mb-4">
-                "The kopitiam is more than just a place to drink coffee. It's where 
+                &quot;The kopitiam is more than just a place to drink coffee. It&apos;s where 
                 lawyers and laborers sit side by side, where deals are made and 
-                friendships are forged over steaming cups of kopi."
+                friendships are forged over steaming cups of kopi.&quot;
               </blockquote>
               <footer className="font-bold text-terracotta-warm">
                 — Uncle Lim, Founder
@@ -52,9 +52,9 @@ const HeritageSection = () => {
 
             <p className="text-espresso-dark leading-relaxed mb-8">
               Today, Morning Brew Collective honors that legacy. Our coffee beans 
-              are still roasted in small batches using Uncle Lim's original 1970s 
+              are still roasted in small batches using Uncle Lim&apos;s original 1970s 
               roaster. Our kaya is made fresh daily. Every cup tells a story of 
-              Singapore's multicultural soul.
+              Singapore&apos;s multicultural soul.
             </p>
 
             {/* Values */}

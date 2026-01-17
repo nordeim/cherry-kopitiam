@@ -2,7 +2,8 @@
 
 import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { ShoppingBag, X, Menu } from 'lucide-react'
+import Link from 'next/link'
+import { ShoppingBag, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useCartStore } from '@/stores/cart-store'
 import { RetroButton } from '@/components/ui/retro/button'
@@ -39,14 +40,14 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex flex-col gap-1 group">
+        <Link href="/" className="flex flex-col gap-1 group">
           <span className="font-display text-xl font-bold text-cream-white tracking-tight">
             Morning Brew
           </span>
           <span className="font-display text-xs font-semibold text-sunrise-amber uppercase tracking-[0.15em]">
             Collective
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
