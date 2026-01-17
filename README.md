@@ -1,3 +1,5 @@
+<img width="1015" height="968" alt="image" src="https://github.com/user-attachments/assets/14896970-de05-4fd9-8e37-f7033b0e037e" />
+
 # ☕ Morning Brew Collective
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
