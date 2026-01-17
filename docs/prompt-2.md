@@ -24,4 +24,7 @@ Awesome job on your meticulous analysis, planning and execution. Please keep up 
 
 Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review and then plan to update @GEMINI.md to include the latest updates/changes to the codebase, particularly the issues related to Tailwind CSS v4 and its resolution so that any AI coding agent taking over the project can avoid the same errors and issues. Review and validate your plan to include the additional details to @GEMINI.md before proceeding to execute it meticulously. 
 
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review @README.md , then plan to update it to align it with your current understanding of the project and the codebase design and the actual implementation. Make the @README.md correctly and accurately reflect the actual project design and its codebase. Include additional details like setup/install guide, a file hierarchy diagram to show the folder structure with key files listing and description, include mermaid diagrams to show the application flowchart and user and application interactions. Improve the visual presentation of the final README.md to make it look awesome and attractive, besides making it more informative and useful to new contributors and users alike. Include standard MIT license in the README.
 

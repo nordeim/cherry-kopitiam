@@ -89,7 +89,7 @@ Get the kopitiam running on your local machine in under 5 minutes.
 
 4.  **Visit the Shop:**
     *   **Frontend:** [http://localhost:3000](http://localhost:3000)
-    *   **Backend API:** [http://localhost:8000](http://localhost:8000)
+    *   **Backend API:** [http://localhost:8000](http://localhost:8000) (Proxied)
     *   **Mailpit:** [http://localhost:8025](http://localhost:8025)
 
 ### Development Commands
@@ -126,6 +126,65 @@ A Monorepo designed for separation of concerns.
 └── docker-compose.yml      # Orchestration
 ```
 
+### Key Files Overview
+
+- **`frontend/src/app/globals.css`**: The heart of the design system. Contains the Tailwind v4 configuration, custom animations, and heritage color palette.
+- **`backend/app/Services/InventoryService.php`**: Critical business logic for inventory management using pessimistic locking to prevent overselling.
+- **`backend/app/Models/Order.php`**: Handles the complex GST calculations (inclusive pricing logic) and invoice generation.
+- **`infra/docker-compose.yml`**: Defines the multi-container environment ensuring parity between local development and production.
+
+---
+
+## 🔄 Application Flow
+
+```mermaid
+graph TD
+    User((User)) -->|Visits| Frontend[Next.js Frontend]
+    Frontend -->|API Requests| Nginx[Nginx Proxy]
+    Nginx -->|Routes| Backend[Laravel API]
+    
+    subgraph "Backend Services"
+        Backend -->|Queries| DB[(PostgreSQL)]
+        Backend -->|Cache/Locks| Redis[(Redis)]
+        Backend -->|Emails| Mailpit[Mailpit]
+    end
+    
+    subgraph "External"
+        Backend -->|Payments| Stripe[Stripe / PayNow]
+    end
+```
+
+### Order Creation Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Backend
+    participant DB
+    participant Redis
+
+    User->>Frontend: Adds Items to Cart
+    Frontend->>Frontend: Updates Zustand Store
+    User->>Frontend: Clicks Checkout
+    Frontend->>Backend: POST /api/v1/orders
+    
+    Backend->>DB: Start Transaction
+    Backend->>DB: Lock Inventory Rows (Pessimistic)
+    
+    alt Stock Available
+        Backend->>DB: Decrement Stock
+        Backend->>DB: Create Order Record
+        Backend->>DB: Commit Transaction
+        Backend-->>Frontend: 201 Created (Invoice ID)
+        Frontend-->>User: Show Success Page
+    else Out of Stock
+        Backend->>DB: Rollback Transaction
+        Backend-->>Frontend: 422 Unprocessable Entity
+        Frontend-->>User: Show Error Toast
+    end
+```
+
 ---
 
 ## 🤝 Contributing
@@ -145,6 +204,28 @@ We welcome contributions that align with our **"Meticulous"** philosophy.
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+### MIT License
+
+Copyright (c) 2026 Morning Brew Collective Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ---
 
