@@ -28,3 +28,11 @@ Awesome job on your meticulous analysis, planning and execution. Please keep up 
 
 Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review @README.md , then plan to update it to align it with your current understanding of the project and the codebase design and the actual implementation. Make the @README.md correctly and accurately reflect the actual project design and its codebase. Include additional details like setup/install guide, a file hierarchy diagram to show the folder structure with key files listing and description, include mermaid diagrams to show the application flowchart and user and application interactions. Improve the visual presentation of the final README.md to make it look awesome and attractive, besides making it more informative and useful to new contributors and users alike. Include standard MIT license in the README.
 
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review and analyze @Makefile.new , validate its content against the current project deployment and testing configuration, particularly with the new Docker container config and deployment setup. Finally, meticulously plan to migrate the validated content of @Makefile.new to the exiting main @Makefile using the merging method/approach.
+
+---
+
+Awesome job on your meticulous analysis, planning and execution. Please keep up the good work in your rigorous and meticulous approach to planning and execution. Now, please meticulously review @README.md and @GEMINI.md , then plan and update them with the latest changes to the project setup and the current state of codebase (e.g. "db migrations successful"), particularly related to the new Docker container configuration setup and the update Makefile.
+

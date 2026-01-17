@@ -73,37 +73,38 @@ Get the kopitiam running on your local machine in under 5 minutes.
 
 ### Installation
 
-1.  **Start the Infrastructure:**
+1.  **Start the Environment:**
     ```bash
     make up
     ```
-    *This spins up Postgres, Redis, Laravel (Backend), Next.js (Frontend), and Mailpit.*
+    *Starts Postgres, Redis, Laravel (Backend), Next.js (Frontend), and Mailpit.*
 
 2.  **Install Dependencies:**
     ```bash
     make install
     ```
 
-3.  **Run Migrations:**
+3.  **Setup Database (Migrate & Seed):**
     ```bash
-    make migrate
+    make fresh
     ```
+    *Runs migrations and seeds the database with Singaporean locations and menu items.*
 
 4.  **Visit the Shop:**
     *   **Frontend:** [http://localhost:3000](http://localhost:3000)
-    *   **Backend API:** [http://localhost:8000](http://localhost:8000) (Proxied)
+    *   **Backend API:** [http://localhost:8080/api](http://localhost:8080/api)
     *   **Mailpit:** [http://localhost:8025](http://localhost:8025)
 
-### Development Commands
+### Operational Commands (Makefile)
 
 | Command | Description |
 | :--- | :--- |
 | `make up` | Start all containers in detached mode. |
 | `make down` | Stop all containers. |
 | `make logs` | Tail logs for all services. |
-| `make shell-backend` | SSH into the Laravel container. |
-| `make shell-frontend` | SSH into the Next.js container. |
-| `make test` | Run E2E (Playwright) and Unit (Pest) tests. |
+| `make shell-app` | SSH into the Laravel container. |
+| `make test` | Run Backend PHPUnit and Frontend tests. |
+| `make fresh` | Reset database and re-seed with test data. |
 
 ---
 
@@ -121,11 +122,11 @@ A Monorepo designed for separation of concerns.
 │   ├── src/app/            # App Router (Pages)
 │   ├── src/components/     # Retro-styled UI Components
 │   └── src/stores/         # Zustand State Logic
-├── infra/                  # Infrastructure Configuration
-│   ├── postgres/           # DB Init Scripts
-│   └── monitoring/         # Prometheus Config
+├── infra/                  # Infrastructure Configuration (Nginx)
 ├── docs/                   # Architecture & API Documentation
-└── docker-compose.yml      # Orchestration
+├── docker-compose.yml      # Orchestration
+├── Dockerfile              # Production Docker build
+└── Makefile                # Operational shortcuts
 ```
 
 ### Key Files Overview

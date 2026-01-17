@@ -97,14 +97,13 @@ $gst = BigDecimal::of($amount)->multipliedBy('0.09');
 ### Global Commands (Makefile)
 *   `make up` -> Start Docker stack (Detached).
 *   `make install` -> Install PHP/Node dependencies.
-*   `make migrate` -> Run Laravel migrations.
+*   `make fresh` -> **Reset DB & Seed Data**. (Use this for initial setup).
 *   `make test` -> Run Backend PHPUnit/Pest tests.
-*   `make shell-backend` -> SSH into Laravel container.
-*   `make shell-frontend` -> SSH into Next.js container.
+*   `make shell-app` -> SSH into Laravel container.
 
 ### Local Endpoints
 *   **Frontend:** [http://localhost:3000](http://localhost:3000)
-*   **Backend API:** [http://localhost:8080](http://localhost:8080) (Proxied)
+*   **Backend API:** [http://localhost:8080/api](http://localhost:8080/api) (Proxied)
 *   **Mailpit:** [http://localhost:8025](http://localhost:8025)
 
 ---
@@ -147,6 +146,10 @@ export const viewport: Viewport = {
 }
 ```
 
+### Docker Build (Composer)
+**Issue:** `Could not open input file: artisan` during build.
+**Solution:** The `Dockerfile` uses `--no-scripts` during `composer install` to avoid executing artisan commands before the code copy. We run `php artisan package:discover --ansi` manually after the code is copied.
+
 ---
 
 ## 7. 🗺️ Codebase Atlas
@@ -180,5 +183,5 @@ Before marking ANY task complete, you must verify:
 
 ---
 
-**Status:** Scaffolding Complete. Tests Passing. Ready for Feature Implementation.
+**Status:** Scaffolding Complete. Database Seeded. Ready for Feature Implementation.
 **Last Updated:** Jan 17, 2026.
