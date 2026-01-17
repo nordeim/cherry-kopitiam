@@ -95,7 +95,7 @@ FROM php-base AS production
 
 # Install Composer dependencies (optimized for production)
 COPY --chown=www-developer:www-developer backend/composer.json backend/composer.lock /var/www/backend/
-RUN cd /var/www/backend && composer install --no-dev --optimize-autoloader
+RUN cd /var/www/backend && composer install --no-dev --optimize-autoloader --no-scripts
 
 # Install Node.js dependencies (production)
 COPY --chown=www-developer:www-developer frontend/package.json frontend/package-lock.json /var/www/frontend/
@@ -104,6 +104,9 @@ RUN cd /var/www/frontend && npm ci --only=production
 # Copy application code
 COPY --chown=www-developer:www-developer backend /var/www/backend
 COPY --chown=www-developer:www-developer frontend /var/www/frontend
+
+# Run Laravel package discovery now that artisan exists
+RUN cd /var/www/backend && php artisan package:discover --ansi
 
 # Build frontend assets
 RUN cd /var/www/frontend && npm run build
