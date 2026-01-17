@@ -62,7 +62,7 @@ services:
   # Main Application Container (PHP + Node.js BFF)
   app:
     build:
-      context: ./app
+      context: .
       dockerfile: Dockerfile
       args:
         NODE_VERSION: 22.22.0
